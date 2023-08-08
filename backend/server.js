@@ -36,6 +36,7 @@ app.use(
   })
 );
 app.use(cors());
+app.options("*", cors());
 
 app.use("/auth", authRoutes);
 app.use("/students", studentRoutes);
