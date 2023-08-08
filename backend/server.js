@@ -43,6 +43,10 @@ app.use("/students", studentRoutes);
 app.use("/attendance", attendanceRoutes);
 app.use("/subjects", subjectRoutes);
 
+app.get("/", (req, res) => {
+  res.send("Hiiiii");
+});
+
 // Start the server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
