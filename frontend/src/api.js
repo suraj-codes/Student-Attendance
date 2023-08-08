@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_BASE_URL = "https://student-attendance-three.vercel.app/"; // Change to your backend URL
+const API_BASE_URL = "https://student-attendance-three.vercel.app"; // Change to your backend URL
 
 export const login = async (username, password) => {
   try {
