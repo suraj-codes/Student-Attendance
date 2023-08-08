@@ -11,10 +11,13 @@ const subjectRoutes = require("./routes/subjects");
 
 // Connect to MongoDB
 mongoose
-  .connect("mongodb://localhost:27017/student_management", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+  .connect(
+    "mongodb+srv://surajcodes:Suraj123@cluster0.ojyoqnf.mongodb.net/?retryWrites=true&w=majority",
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    }
+  )
   .then(() => {
     console.log("Connected to Mongo");
   })
