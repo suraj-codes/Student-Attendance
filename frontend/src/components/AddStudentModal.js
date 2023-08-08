@@ -12,7 +12,8 @@ const customModalStyles = {
     bottom: "auto",
     marginRight: "-50%",
     transform: "translate(-50%, -50%)",
-    width: "600px",
+    maxWidth: "600px",
+    width: "90%",
   },
 };
 
@@ -52,25 +53,29 @@ const AddStudentModal = ({ isOpen, onClose, onAddStudent }) => {
 
   const handleAddStudent = async () => {
     // Call the API to add the student with formData
-    const response = await register({
-      ...formData,
-      sclass: formData.class,
-      subjects: formData.selectedSubjects,
-    });
+    try {
+      const response = await register({
+        ...formData,
+        sclass: formData.class,
+        subjects: formData.selectedSubjects,
+      });
 
-    onAddStudent({
-      ...formData,
-      subjects: formData.selectedSubjects,
-    });
-    setFormData({
-      name: "",
-      age: "",
-      class: "",
-      username: "",
-      password: "",
-      selectedSubjects: [],
-    });
-    onClose();
+      onAddStudent({
+        ...formData,
+        subjects: formData.selectedSubjects,
+      });
+      setFormData({
+        name: "",
+        age: "",
+        class: "",
+        username: "",
+        password: "",
+        selectedSubjects: [],
+      });
+      onClose();
+    } catch (e) {
+      alert(e);
+    }
   };
 
   const handleCreate = async (data) => {
@@ -94,7 +99,9 @@ const AddStudentModal = ({ isOpen, onClose, onAddStudent }) => {
       style={customModalStyles}
       contentLabel="Add Student Modal"
     >
-      <h2 className="text-xl font-semibold mb-4">Add New Student</h2>
+      <h2 className="text-xl font-semibold mb-4 text-center md:text-left">
+        Add New Student
+      </h2>
       <div>
         <label className="block mb-2 font-medium">Name</label>
         <input
@@ -146,17 +153,6 @@ const AddStudentModal = ({ isOpen, onClose, onAddStudent }) => {
       </div>
       <div className="mt-4">
         <label className="block mb-2 font-medium">Subjects</label>
-        {/* <Select
-          options={subjects.map((subject) => ({
-            value: subject.name,
-            label: subject.name,
-          }))}
-          isMulti
-          onChange={handleSubjectChange}
-          value={subjects.filter((subject) =>
-            formData.selectedSubjects.includes(subject.name)
-          )}
-        /> */}
         <CreatableSelect
           isClearable
           onChange={handleSubjectChange}
@@ -171,31 +167,16 @@ const AddStudentModal = ({ isOpen, onClose, onAddStudent }) => {
             label: subject,
           }))}
         />
-        {/* <div className="mt-2">
-          <input
-            type="text"
-            className="w-full p-2 border rounded focus:outline-none focus:border-blue-500"
-            placeholder="Enter new subject"
-            value={newSubject}
-            onChange={handleNewSubjectChange}
-          />
-          <button
-            className="mt-2 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-            onClick={handleCreateSubject}
-          >
-            Create Subject
-          </button>
-        </div> */}
       </div>
-      <div className="mt-4">
+      <div className="mt-4 flex flex-col md:flex-row items-center md:justify-between">
         <button
-          className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+          className="bg-blue-500 text-white px-4 py-2 rounded w-full md:w-auto hover:bg-blue-600 md:mr-2 md:mb-0 mb-2"
           onClick={handleAddStudent}
         >
           Add Student
         </button>
         <button
-          className="ml-2 text-gray-600 hover:text-gray-800"
+          className="bg-red-500 text-white px-4 py-2 rounded w-full md:w-auto hover:bg-red-600"
           onClick={onClose}
         >
           Cancel

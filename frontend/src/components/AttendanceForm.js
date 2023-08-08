@@ -50,15 +50,18 @@ const AttendanceForm = () => {
 
   return (
     <div>
-      <h2 className="text-xl font-semibold mb-4">Student Attendance</h2>
+      <h2 className="text-xl font-semibold mb-4 text-center md:text-left">
+        Student Attendance
+      </h2>
       <form
         onSubmit={handleAttendanceSubmit}
-        className="flex gap-[24px] items-center"
+        className="flex flex-col gap-4 md:flex-row md:items-center"
       >
         {/* Date input */}
         <div className="flex flex-col">
-          <label>Date:</label>
+          <label htmlFor="date">Date:</label>
           <DatePicker
+            id="date"
             className="border p-2 rounded"
             maxDate={new Date()}
             selected={selectedDate}
@@ -69,8 +72,9 @@ const AttendanceForm = () => {
 
         {/* Class select */}
         <div className="flex flex-col">
-          <label>Class:</label>
+          <label htmlFor="class">Class:</label>
           <select
+            id="class"
             className="border p-2 rounded bg-white"
             value={selectedClass}
             onChange={(e) => setSelectedClass(e.target.value)}
@@ -84,12 +88,14 @@ const AttendanceForm = () => {
           </select>
         </div>
       </form>
-      <div className="shadow-lg">
+      <div className="shadow-lg overflow-x-auto">
         <table className="min-w-full">
           <thead>
             <tr>
               <th className="px-4 py-2 text-left">Name</th>
-              <th className="px-4 py-2 text-left w-full">Attended</th>
+              <th className="px-4 py-2 text-left w-full md:w-[40%]">
+                Attended
+              </th>
               <th className="px-4 py-2 text-left">Action</th>
             </tr>
           </thead>

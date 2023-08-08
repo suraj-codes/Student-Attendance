@@ -54,14 +54,14 @@ const AttendanceRow = ({ student, index, date }) => {
           onChange={(selectedOptions) => {
             setSelected(selectedOptions);
           }}
+          className="w-full"
         ></Select>
       </td>
       <td className="px-4 py-2">
-        {" "}
         <button
           onClick={handleSubmit}
           type="submit"
-          className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+          className="bg-blue-500 text-white px-4 py-2 rounded w-full md:w-auto hover:bg-blue-600"
         >
           Submit
         </button>

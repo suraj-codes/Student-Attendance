@@ -15,8 +15,11 @@ const Login = ({ onLogin }) => {
 
   return (
     <div className="flex justify-center items-center min-h-screen">
-      <form onSubmit={handleLogin} className="bg-white p-8 rounded shadow-md">
-        <h2 className="text-2xl font-semibold mb-4">Login</h2>
+      <form
+        onSubmit={handleLogin}
+        className="bg-white p-8 rounded shadow-md w-full max-w-md"
+      >
+        <h2 className="text-2xl font-semibold mb-4 text-center">Login</h2>
         <div className="mb-4">
           <label htmlFor="username" className="block text-sm font-medium">
             Username:
@@ -45,7 +48,7 @@ const Login = ({ onLogin }) => {
         </div>
         <button
           type="submit"
-          className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+          className="bg-blue-500 text-white px-4 py-2 rounded w-full hover:bg-blue-600"
         >
           Log In
         </button>

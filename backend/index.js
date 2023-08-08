@@ -13,6 +13,7 @@ const subjectRoutes = require("./routes/subjects");
 mongoose
   .connect(
     "mongodb+srv://surajcodes:Suraj123@cluster0.ojyoqnf.mongodb.net/?retryWrites=true&w=majority",
+    // "mongodb://localhost:27017/student_management",
     {
       useNewUrlParser: true,
       useUnifiedTopology: true,

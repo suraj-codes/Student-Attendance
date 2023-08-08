@@ -31,7 +31,7 @@ const AdminDashboard = ({ loggedIn }) => {
 
   return (
     <div className="container mx-auto mt-8">
-      <ul className="flex space-x-4 border-y-[1px] border-[#d6d6d6] mb-[54px]">
+      <ul className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-4 border-y-[1px] border-[#d6d6d6] mb-[54px]">
         <li
           className={`cursor-pointer p-[8px] ${
             activeTab === "database" ? "font-bold bg-[#d6d6d6]" : ""
@@ -49,13 +49,15 @@ const AdminDashboard = ({ loggedIn }) => {
           Student Attendance
         </li>
       </ul>
-      {activeTab === "database" && (
-        <StudentTable
-          students={students}
-          setIsAddStudentModalOpen={setIsAddStudentModalOpen}
-        />
-      )}
-      {activeTab === "attendance" && <AttendanceForm />}
+      <div className="grid px-[24px] md:px-0 grid-cols-1 md:gap-4">
+        {activeTab === "database" && (
+          <StudentTable
+            students={students}
+            setIsAddStudentModalOpen={setIsAddStudentModalOpen}
+          />
+        )}
+        {activeTab === "attendance" && <AttendanceForm />}
+      </div>
       <AddStudentModal
         isOpen={isAddStudentModalOpen}
         onClose={() => setIsAddStudentModalOpen(false)}
